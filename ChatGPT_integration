@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+#chat-container {
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+}
+
+#chat-history {
+  overflow-y: auto;
+  max-height: 300px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#chat-input-container {
+  display: flex;
+}
+
+#chat-input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#send-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#send-button:hover {
+  background-color: #3e8e41;
+}
+    </style>
+  </head>
+  <body>
+    <div id="chat-container">
+      <div id="chat-history"></div>
+      <div id="chat-input-container">
+        <input id="chat-input" type="text" placeholder="Type a message..." />
+        <button id="send-button">Send</button>
+      </div>
+    </div>
+    <script >
+        const chatHistory = document.getElementById('chat-history');
+const chatInput = document.getElementById('chat-input');
+const sendButton = document.getElementById('send-button');
+
+sendButton.addEventListener('click', () => {
+  const message = chatInput.value;
+  if (message.trim()) {
+    const messageElement = document.createElement('p');
+    messageElement.textContent = message;
+    chatHistory.appendChild(messageElement);
+    chatInput.value = '';
+
+    // Add code here to send the message to ChatGPT and display the response
+  }
+});
+
+chatInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendButton.click();
+  }
+});
+    </script>
+  </body>
+</html>
